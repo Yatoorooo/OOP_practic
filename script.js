@@ -1,49 +1,59 @@
-'use strict';
+"use strict";
 
 class People{
-    constructor(name, gender){
+  constructor(name , age){
     this.name = name;
-    this.gender = gender;
-}
+    this.age = age;
+  }
 };
 
-class Apartmens{
-    constructor(){
-        this.house = [];
-    }
+class Appartament{
+  constructor(){
+   this.house = [];
+  }
 
-    addHumen(){
-        this.house.push(People);
-    }
+  addPeople(people){
+    this.house.push(people);
+  }
 };
-class residentialComplex{
-    constructor(maxComplex){
-        this.apartaments = [];
-        this.maxComplex = maxComplex;
-    }
-   addApaartamets(){
-    if(this.apartaments.length < this.maxComplex){
-        this.apartaments.push(this.apartaments);
+
+class Complex{
+  constructor(maxComplex){
+  this.complex = [];
+  this.maxComplex = maxComplex;
+  }
+  addComplex(complex){
+    if(this.complex.length < this.maxComplex){
+      this.complex.push(complex);
     }else{
-        console.log(`This Apartaments is full`);
+      console.log(`Sorry, complex is full.`)
     }
-   }
+
+  }
+  showInfo(){
+    console.log(`Complex information`);
+    this.complex.forEach((complex, index)=>{
+      console.log(`This complex ${index + 1}`)
+      complex.house.forEach((house, index)=>{
+    console.log(`People ${index + 1} ${house.name}`)
+      })
+    })
+  }
 };
 
-const People1 = new People('Egor', 'Male');
 
-const People2 = new People('Nikita', 'Male');
+const human1 = new People('Egor', 20);
+const human2 = new People('Nikita', 20);
 
-const Apartmens1 = new Apartmens();
-const Apartmens2 = new Apartmens();
+const complex1 = new Appartament();
+const complex2 = new Appartament();
 
-Apartmens1.addHumen(People1);
-Apartmens2.addHumen(People2);
+complex1.addPeople(human1);
+complex2.addPeople(human2);
 
-const House = new residentialComplex(10);
+const house = new Complex(5);
 
-House.addApaartamets(Apartmens1);
-House.addApaartamets(Apartmens2);
+house.addComplex(complex1)
+house.addComplex(complex2);
 
-console.log(House);
-
+house.showInfo();
